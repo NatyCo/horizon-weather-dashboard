@@ -22,7 +22,9 @@ jobs:
 
       - name: Inject API Key into script.js
         run: |
-          sed -i "s/WEATHER_API_KEY_PLACEHOLDER/${{ secrets.WEATHER_API_KEY }}/g" script.js
+          sed -i "s|WEATHER_API_KEY_PLACEHOLDER|${API_KEY}|g" script.js
+        env:
+          API_KEY: ${{ secrets.WEATHER_API_KEY }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
