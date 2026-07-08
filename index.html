@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizon Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="weather-app">
+      <!-- Control Card -->
+      <div class="card control-card">
+        <h1>Horizon Weather</h1>
+        <div class="input-group">
+          <!-- Text Input for City Name -->
+          <input
+            type="text"
+            id="city-input"
+            placeholder="Enter any city name (e.g., Chisinau)..."
+          />
+          <button id="get-weather-btn">Check Weather</button>
+        </div>
+      </div>
+
+      <!-- Master Weather Display Card -->
+      <div class="card weather-card">
+        <h2 id="location">Select a City</h2>
+
+        <div class="main-info">
+          <img
+            id="weather-icon"
+            class="hidden"
+            src=""
+            alt="Weather Condition Icon"
+          />
+          <div>
+            <div class="temp-wrapper">
+              <span id="main-temperature">--</span
+              ><span class="temp-unit">°C</span>
+            </div>
+            <div id="weather-main" class="condition">Waiting for input...</div>
+          </div>
+        </div>
+
+        <!-- Detailed Metrics Grid -->
+        <div class="metrics-grid">
+          <div class="metric-item">
+            <span class="metric-label">🌡️ Feels Like</span>
+            <span class="metric-value"><span id="feels-like">--</span>°C</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">💧 Humidity</span>
+            <span class="metric-value"><span id="humidity">--</span>%</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">💨 Wind Speed</span>
+            <span class="metric-value"><span id="wind">--</span> m/s</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">🌪️ Wind Gust</span>
+            <span class="metric-value"><span id="wind-gust">--</span> m/s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
