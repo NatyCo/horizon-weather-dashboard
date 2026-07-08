@@ -1,6 +1,5 @@
 // Connect to the OpenWeatherMap API
-const API_KEY = "WEATHER_API_KEY_PLACEHOLDER"; 
-
+const API_KEY = "WEATHER_API_KEY_PLACEHOLDER";
 // Get references to DOM elements
 const getWeatherBtn = document.getElementById("get-weather-btn");
 const locationDisplay = document.getElementById("location");
