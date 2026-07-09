@@ -22,7 +22,29 @@ jobs:
 
       - name: Inject API Key into script.js
         run: |
-          sed -i "s#WEATHER_API_KEY_PLACEHOLDER#${API_KEY}#g" script.js
+          node <<'NODE'
+          const fs = require('fs');
+
+          const key = process.env.API_KEY?.trim();
+          if (!key) {
+            throw new Error('WEATHER_API_KEY secret is missing or empty');
+          }
+
+          const file = 'script.js';
+          const source = fs.readFileSync(file, 'utf8');
+          const placeholder = '"WEATHER_API_KEY_PLACEHOLDER"';
+
+          if (!source.includes(placeholder)) {
+            throw new Error('WEATHER_API_KEY placeholder was not found in script.js');
+          }
+
+          const updated = source.replace(
+            placeholder,
+            JSON.stringify(key),
+          );
+
+          fs.writeFileSync(file, updated);
+          NODE
         env:
           API_KEY: ${{ secrets.WEATHER_API_KEY }}
 
